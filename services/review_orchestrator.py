@@ -103,9 +103,9 @@ def _run_pipeline(repo_name: str, pr_number: int, head_sha: str, token: str = No
                 if res["deps"]: rag_rows.append(f"`{filename}`: {', '.join(res['deps'])}")
 
     # -----------------------------
-    # BUILD ENTERPRISE MARKDOWN REPORT
+    # BUILD PREVIEW MARKDOWN REPORT
     # -----------------------------
-    final_report = "## 🛡️ Enterprise Automated PR Review\n\n"
+    final_report = "## 🛡️ PReview — Automated PR Analysis\n\n"
     
     # Overview & Magic Fix Command
     final_report += "> **Review Summary**: PR scanned by CodeBERT (Semantic), AST Analyzer (Structural), and Random Forest SHAP (Deployment Risk).\n"
@@ -113,8 +113,8 @@ def _run_pipeline(repo_name: str, pr_number: int, head_sha: str, token: str = No
     
     # Test Coverage Enforcement (Capstone Soft-Requirement)
     if not has_tests:
-        final_report += "### 🧪 Capstone Quality Recommendation\n"
-        final_report += "> **No tests detected in this PR**. While not strictly enforced, adding unit tests demonstrates industry-standard rigor.\n\n"
+        final_report += "### 🧪 Quality Recommendation\n"
+        final_report += "> **No tests detected in this PR**. Adding unit tests is recommended for production-grade code.\n\n"
 
     # XAI Report
     final_report += f"{xai_report}\n\n"
