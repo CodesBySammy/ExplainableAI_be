@@ -47,7 +47,7 @@ async def github_callback(code: str):
             value=access_token, 
             max_age=30*24*3600, 
             httponly=True,
-            samesite='none',
+            samesite='lax',
             secure=True
         )
         return response
