@@ -10,14 +10,14 @@ from core.logger import logger
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Startup & shutdown events."""
-    logger.info("🚀 Enterprise XAI Server starting up...")
+    logger.info("🚀 PReview server starting up...")
     yield
-    logger.info("🛑 Enterprise XAI Server shutting down.")
+    logger.info("🛑 PReview server shutting down.")
 
 app = FastAPI(
-    title="Enterprise XAI PR Reviewer",
-    description="AI-powered code review with explainable risk analysis",
-    version="1.1.0",
+    title="PReview",
+    description="AI-powered pull request reviews with explainable risk analysis",
+    version="2.0.0",
     lifespan=lifespan,
 )
 
@@ -41,7 +41,7 @@ app.include_router(auth_router)
 
 @app.get("/health")
 def health_check():
-    return {"status": "healthy", "version": "1.1.0", "message": "Enterprise XAI Server is running."}
+    return {"status": "healthy", "version": "2.0.0", "message": "PReview server is running."}
 
 # Mount the frontend directory to serve static files at the root
 # IMPORTANT: This must be at the bottom so it doesn't override API endpoints
